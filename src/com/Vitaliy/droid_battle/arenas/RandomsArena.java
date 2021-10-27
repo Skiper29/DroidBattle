@@ -36,13 +36,11 @@ public class RandomsArena extends BattleArena {
                         secondDroid.getName(), firstDroid.receiveDamage(((Math.random() / 2.0) - 0.25)
                                 * secondDroid.getDamage() + secondDroid.shoot()))));
                 if (firstDroid.isDead()) {
-                    secondTeam.remove(firstDroid);
+                    firstTeam.remove(firstDroid);
                 }
             }
             isFirstTeamTurn = !isFirstTeamTurn;
             System.out.println(log.appendRoundResult(firstTeam, secondTeam));
-            if(round == 50)
-                break;
         }
         if (firstTeam.isEmpty()) {
             System.out.println(log.appendResult("Second team won!!!"));

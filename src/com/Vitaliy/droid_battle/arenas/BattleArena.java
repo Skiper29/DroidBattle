@@ -22,6 +22,7 @@ public abstract class BattleArena {
             System.out.println(createdDroidsInfo(copyDroid));
             System.out.print(" Choose team (enter 1 or 2) or 0 to exit: ");
             int team = input.nextInt();
+            input.nextLine();
             if (team == 0)
                 break;
             System.out.print(" Enter droid number: ");

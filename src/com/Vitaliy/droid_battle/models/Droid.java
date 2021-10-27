@@ -5,11 +5,10 @@ import java.time.LocalTime;
 public abstract class Droid {
     private final String name;
     protected double health;
-
-
     protected double damage;
     protected int reloadTime;
     protected LocalTime lastReload;
+
 
     public Droid(String name, double health, double damage, int reloadTime) {
         this.name = name;
@@ -30,15 +29,6 @@ public abstract class Droid {
     }
 
     public int getReloadTime() { return reloadTime; }
-
-    @Override
-    public String toString() {
-        return "Droid{" +
-                "name='" + name + '\'' +
-                ", health=" + health +
-                ", damage=" + damage +
-                '}';
-    }
 
     public boolean isDead() {
         return (health <= 0);

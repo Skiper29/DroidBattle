@@ -41,7 +41,6 @@ public class BattleWriter {
                 info.append("%-15s│%-13s│%-10.2f│".formatted(droid.getName(), droid.getType(), droid.getHealth())).append('\n');
             }
         }
-        //buffer.append(info);
         return info.toString();
     }
 

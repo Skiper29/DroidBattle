@@ -24,15 +24,16 @@ public class ApplicationController {
     public void start() {
         System.out.println("\n\n\t\tWelcome to the Droid Battles game!!!\n");
         while (true) {
+            System.out.println("\n\n");
             System.out.println("""
                     Enter command
                      play - to start new game
                      watch - to reload previous game.
-                     add droid - to create new droid
+                     add - to create new droid
                      exit - to exit the game""");
             String command = scanner.nextLine();
             switch (command) {
-                case "add droid":
+                case "add":
                     createDroids();
                     break;
                 case "play":
@@ -47,7 +48,6 @@ public class ApplicationController {
                     throw new RuntimeException("The command doesn't exist.");
 
             }
-            droids.forEach(Droid::repair);
             System.out.print("Enter any key to continue ");
             scanner.nextLine();
         }
@@ -71,6 +71,7 @@ public class ApplicationController {
         scanner.nextLine();
         BattleArena arena = factory.createArena(arenaNumber);
         String battle = arena.startBattle(droids);
+        droids.forEach(Droid::repair);
         try{
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FILE),32 * 1024);
             bufferedWriter.write(battle);
@@ -82,17 +83,16 @@ public class ApplicationController {
     }
 
     protected void createDroids() {
-        Scanner input = new Scanner(System.in);
         DroidFactory droidFactory = new DroidFactory();
         System.out.println(droidsInfo());
         while (true) {
             System.out.print(" Choose droid type (1-4) or 0 to exit: ");
-            int type = input.nextInt();
-            input.nextLine();
+            int type = scanner.nextInt();
+            scanner.nextLine();
             if (type == 0)
                 break;
             System.out.print(" Enter droid name: ");
-            String name = input.nextLine();
+            String name = scanner.nextLine();
             droids.add(droidFactory.createDroid(type, name));
         }
     }

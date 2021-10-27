@@ -26,7 +26,7 @@ public class DamagerDroid extends Droid {
 
     @Override
     public double shoot() {
-        if(Math.random() > 0.75)
+        if(Math.random() > 0.5)
             return super.shoot() * NUM_OF_GUNS;
         return super.shoot();
     }
